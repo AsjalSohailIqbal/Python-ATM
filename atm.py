@@ -19,7 +19,7 @@ def deposit(balance,history):
         if amount_deposit>0:
             balance+=amount_deposit
             print('New Balance:',balance,sep="")
-            history.append('Deposited '+str(amount_deposit))
+            history.append(f"Deposited {amount_deposit}")
             return balance
         else:
             print("Invalid Amount")
@@ -34,7 +34,7 @@ def withdraw(balance,history):
         else:
             balance-=amount_withdraw
             print("New Balance:",balance,sep="")
-            history.append('Withdrawn '+str(amount_withdraw))
+            history.append(f"Withdrawn {amount_withdraw}")
             return balance
 
 def transfer(balance,history):
@@ -48,7 +48,7 @@ def transfer(balance,history):
         else:
             balance-=amount_transfer
             print("Transferred",amount_transfer,"to",receiver_name)
-            history.append('Transferred '+str(amount_transfer)+" to "+receiver_name)
+            history.append(f"Transferred {amount_transfer} to {receiver_name}")
             return balance
 
 def change_pin(current_pin,history):
@@ -60,7 +60,7 @@ def change_pin(current_pin,history):
             while True:    
                 new_pin = input("Enter new PIN:")
                 if new_pin.isdigit():
-                    if len(str(new_pin)) != 4:
+                    if len(new_pin) != 4:
                         print("Invalid Input, Enter a four digit PIN")
                         continue
                     elif new_pin == old_pin:
@@ -68,7 +68,7 @@ def change_pin(current_pin,history):
                     else:
                         print("PIN changed successfully")
                         history.append("PIN Changed")
-                        return(new_pin)
+                        return new_pin
                 else:
                     print("Invalid Input, Enter a four Digit Pin")
 
@@ -76,6 +76,7 @@ def show_history(history):
     if len(history)>0:
         for transaction in history:
             print(transaction)
+            print()
     else:
         print("No Transactions Yet")
     
@@ -111,7 +112,7 @@ def atm(current_pin):
    
             case 7:
                 print('Thank you for using our ATM')
-                return(current_pin)
+                return current_pin
     
             case _:
                 print("Invalid Input, Try Again")
